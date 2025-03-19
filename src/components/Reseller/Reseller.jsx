@@ -424,13 +424,7 @@ export default function Reseller() {
                         <input type="number" onChange={(e) => setCustomerLimit(e.target.value)} value={customerLimit} name="customerlimit" id="customerlimit" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Subscribe Num" required="" />
                       </div>
                     </div>
-                    <button type="button" className="text-blue-700 mr-5
-                   hover:text-white border border-blue-700
-                    hover:bg-blue-800 focus:ring-4 focus:outline-none
-                     focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center 
-                      dark:border-blue-500 dark:text-blue-500 dark:hover:text-white
-                       dark:hover:bg-blue-500 dark:focus:ring-blue-800">Reset</button>
-
+                   
                     <button type="submit"
                       disabled={!(formik.isValid && formik.dirty)}
                       onClick={handleAdd}
