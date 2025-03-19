@@ -1,0 +1,7 @@
+.resellerCustomer_table {
+    border: 0.84px solid rgba(209, 209, 209, 1);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 1rem;
+    overflow-x: auto;
+}

@@ -1,0 +1,88 @@
+.user {
+    color: rgba(40, 81, 144, 1);
+}
+
+.notifications {
+    color: rgba(40, 81, 144, 1);
+}
+
+.hover_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 50px;
+    margin: 30px 0 !important;
+}
+
+.icon {
+
+    color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hover_container:hover .icon {
+    color: rgba(10, 10, 10, 1);
+    transform: scale(1.2);
+}
+
+.hover_text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    transition: opacity 0.3s ease;
+}
+
+.hover_container:hover .hover_text {
+    color: rgba(10, 10, 10, 1);
+}
+
+.hover_container:hover {
+    transform: scale(.9);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.hovered {
+    width: 153px;
+}
+
+.navbar {
+    padding-right: 3rem !important;
+}
+
+.iconLogOut {
+
+    color: white;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hover_container:hover .iconLogOut {
+    color: rgba(190, 30, 45, 1);
+    transform: scale(1.2);
+}
+
+.hover_container:hover .hover_text_logOut {
+    color: rgba(190, 30, 45, 1);
+}
+
+.close_sidebar {
+    display: none;
+}
+
+@media(max-width : 640px) {
+    aside {
+        width: 4rem !important;
+    }
+    .close_sidebar {
+        display: block;
+        left: 10px;
+    }
+    .logo_sidebar{
+        margin-left: .5rem;
+    }
+}

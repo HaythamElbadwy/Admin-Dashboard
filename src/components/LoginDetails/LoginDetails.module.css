@@ -1,0 +1,9 @@
+@media(max-width: 640px) {
+    .formsSetting {
+        margin-left: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+}

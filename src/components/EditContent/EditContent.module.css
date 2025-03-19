@@ -1,0 +1,12 @@
+.dropdownDefaultButton{
+    background-color: rgba(40, 81, 144, 1) !important;  
+  }
+  .dropDownSelected{
+      border: 1px solid rgba(40, 81, 144, 1);
+      border-radius: 10px;
+  }
+  @media (max-width : 640px) {
+    .dropdown_editecontent{
+        padding-left: 2rem;
+    }
+  }
