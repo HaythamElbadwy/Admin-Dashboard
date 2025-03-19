@@ -13,23 +13,8 @@ export default function LoginDetails() {
   const [isLoading, setIsLoading] = useState(false);
   const [userName, setUserName] = useState("")
   const [userEmail, setUserEmail] = useState("")
-  const initialValues = {
-    // name: "",
-    // email: "",
-    password: "",
-    confirmPassword: ""
-  }
-  const validationSchema = Yup.object().shape({
-    // name: Yup.string().min(3, "Not less than 3").max(10, "Max is 10").required("Name is Required"),
-    // email: Yup.string().email("Invalid email").required("Email is Required"),
-    password: Yup.string()
-      .matches(/^(?=.*[a-zA-Z0-9])[a-zA-Z0-9]{5,10}$/,
-        "Password must be 5-10 characters and contain letters or numbers")
-      .required("Password is Required"),
-    confirmPassword: Yup.string().oneOf([Yup.ref('password')], "RePassword should match Password").required("RePasswprd is Required"),
-  })
-
-
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
 
   const adminInfo = async () => {
     try {
@@ -74,12 +59,15 @@ export default function LoginDetails() {
         body: JSON.stringify({
           userName: userName,
           email: userEmail,
-          password: formik.values.password,
+          password,
         })
       });
       const data = await response.json();
       if (response.status === 200) {
-        window.location.reload()
+        setTimeout(() => {
+          window.location.reload()
+        },2000)
+        
         toast.success(data.message, {
           theme: 'dark'
         });
@@ -95,11 +83,16 @@ export default function LoginDetails() {
       setIsLoading(false)
     }
   };
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: adminUpdate
-  })
+  const handleupdate = (e) => {
+    e.preventDefault();
+  
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match!", { theme: "dark" });
+      return;
+    }
+  
+    adminUpdate();
+  };
 
   useEffect(() => {
     adminInfo()
@@ -107,7 +100,7 @@ export default function LoginDetails() {
   return (
     <>
 
-      <form className={`${styles.formsSetting} max-w-sm mr-auto mx-20 my-5 shadow-none`} onSubmit={formik.handleSubmit}>
+      <form className={`${styles.formsSetting} max-w-sm mr-auto mx-20 my-5 shadow-none`}>
 
         <div className="mb-5">
           <label htmlFor="name" className="flex mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
@@ -115,14 +108,8 @@ export default function LoginDetails() {
             type="name"
             id="name"
             onChange={(e) => setUserName(e.target.value)}
-            // onBlur={formik.handleBlur}
             value={userName}
             className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light" placeholder="Enter Your Name" />
-
-          {formik.errors.name && formik.touched.name && (
-            <span className='text-red-600'>{formik.errors.name}</span>
-          )}
-
         </div>
 
         <div className="mb-5">
@@ -134,10 +121,6 @@ export default function LoginDetails() {
             value={userEmail}
             className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light" placeholder="Enter Your Email" />
 
-          {formik.errors.email && formik.touched.email && (
-            <span className='text-red-600'>{formik.errors.email}</span>
-          )}
-
         </div>
 
         <div className="mb-5 relative">
@@ -146,9 +129,8 @@ export default function LoginDetails() {
             <input type={showPassword ? "text" : "password"}
               name='password'
               id="password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
-              onBlur={formik.handleBlur}
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
               className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light"
               placeholder="Enter Your Password" />
 
@@ -160,9 +142,7 @@ export default function LoginDetails() {
               {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
             </button>
           </div>
-          {formik.errors.password && formik.touched.password && (
-            <span className='text-red-600'>{formik.errors.password}</span>
-          )}
+
         </div>
 
         <div className="mb-5 relative">
@@ -171,9 +151,8 @@ export default function LoginDetails() {
             <input
               type={showConfirmPassword ? "text" : "password"}
               id="confirmPassword"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              value={confirmPassword}
               className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light" placeholder="Enter Your Confirm Password" />
 
             <button
@@ -184,14 +163,12 @@ export default function LoginDetails() {
               {showConfirmPassword ? <Eye size={20} /> : <EyeOff size={20} />}
             </button>
           </div>
-          {formik.errors.confirmPassword && formik.touched.confirmPassword && (
-            <span className='text-red-600'>{formik.errors.confirmPassword}</span>
-          )}
         </div>
 
 
-        <button disabled={!(formik.isValid && formik.dirty)}
+        <button
           type="submit"
+          onClick={handleupdate}
           className="text-white bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-800 dark:hover:bg-blue-800 dark:focus:ring-blue-800">
           {isLoading ?
             <i className='fas fa-spinner fa-spin text-2xl'></i>

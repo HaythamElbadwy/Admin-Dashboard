@@ -2,8 +2,7 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import styles from './Login.module.css';
-import { Link, useNavigate } from 'react-router-dom';
-import { useFormik, validateYupSchema } from 'formik';
+import { useFormik} from 'formik';
 import * as Yup from 'yup';
 import { Eye, EyeOff } from 'lucide-react';
 import { toast } from 'react-toastify';
@@ -12,9 +11,9 @@ export default function Login() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [password, setPassword] = useState();
   const initialValues = {
     email: "",
-    password: ""
   }
 
   const handleLogin = async () => {
@@ -30,7 +29,7 @@ export default function Login() {
         },
         body: JSON.stringify({
           email: formik.values.email,
-          password: formik.values.password,
+          password,
         })
       });
       const data = await response.json();
@@ -57,9 +56,6 @@ export default function Login() {
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is Required"),
-    password: Yup.string().matches(/^(?=.*[a-zA-Z0-9])[a-zA-Z0-9]{5,10}$/,
-      "The password must be 5 to 10 characters long and contain letters, numbers, or both.")
-      .required("Password is Required"),
   })
 
   const formik = useFormik({
@@ -96,10 +92,8 @@ export default function Login() {
             <input type={showPassword ? "text" : "password"}
               name='password'
               id="password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
+              onChange={(e) => setPassword(e.target.value)} value={password}
               placeholder='Enter Your Password'
-              onBlur={formik.handleBlur}
               className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
             <button
               type="button"
@@ -111,9 +105,6 @@ export default function Login() {
           </div>
 
         </div>
-        {formik.errors.password && formik.touched.password && (
-          <span className='text-red-600'>{formik.errors.password}</span>
-        )}
         <div className="flex items-start mb-5">
 
         </div>

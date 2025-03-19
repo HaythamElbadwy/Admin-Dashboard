@@ -6,8 +6,7 @@ import { Pagination, theme } from 'flowbite-react';
 import { toast } from 'react-toastify';
 import { data } from 'autoprefixer';
 import { Link } from 'react-router-dom';
-import { useFormik, validateYupSchema } from 'formik';
-import * as Yup from 'yup';
+
 import { Eye, EyeOff } from 'lucide-react';
 
 export default function Reseller() {
@@ -25,9 +24,7 @@ export default function Reseller() {
   const [blockword, setBlockWord] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const initialValues = {
-    password: ""
-  }
+
   function addReseller() {
     setIsNewReseller(true)
   }
@@ -103,7 +100,6 @@ export default function Reseller() {
   ////////////////////////START ADD RESELLER//////////////////////////////
   const addNewReseller = async () => {
     console.log(email, isName, password, customerLimit);
-
     setIsLoading(true)
     try {
       const response = await fetch(`https://wish-omega-blush.vercel.app/admin/createReseller`, {
@@ -113,7 +109,7 @@ export default function Reseller() {
           'authorization': `wisOZ0${localStorage.getItem('authToken')}`
         },
         body: JSON.stringify({
-          email, password: formik.values.password
+          email, password
           , userName: isName, subscriptionsNum: customerLimit
         })
       });
@@ -166,7 +162,7 @@ export default function Reseller() {
     setIsName('')
     setEmail('')
     setCustomerLimit('')
-
+    setPassword('')
   }
   ////////////////////////END ADD RESELLER/////////////////////////////////////
 
@@ -227,18 +223,7 @@ export default function Reseller() {
 
   ////////////////////END EDITE RESELLER/////////////////////////////////
 
-  const validationSchema = Yup.object().shape({
-    password: Yup.string()
-      .matches(/^(?=.*[a-zA-Z0-9])[a-zA-Z0-9]{5,10}$/,
-        "The password must be 5 to 10 characters long and contain letters, numbers, or both.")
-      .required("Password is Required"),
-  })
 
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit: addNewReseller
-  })
 
   ////////////////////START BLOCK RESELLER FUNCTION//////////////////////
 
@@ -410,23 +395,16 @@ export default function Reseller() {
                       <div className="col-span-2">
                         <label htmlFor="password"
                           className="flex mb-2  font-medium text-gray-900 dark:text-white">Password</label>
-                        <input type="password"
-                          onChange={formik.handleChange}
-                          value={formik.values.password}
-                          onBlur={formik.handleBlur}
+                        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password}
                           name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Password" required="" />
                       </div>
-                      {formik.errors.password && formik.touched.password && (
-                        <span className='text-red-600'>{formik.errors.password}</span>
-                      )}
                       <div className="col-span-2">
                         <label htmlFor="customerlimit" className="flex mb-2  font-medium text-gray-900 dark:text-white">Customer Limit</label>
                         <input type="number" onChange={(e) => setCustomerLimit(e.target.value)} value={customerLimit} name="customerlimit" id="customerlimit" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Subscribe Num" required="" />
                       </div>
                     </div>
-                   
+
                     <button type="submit"
-                      disabled={!(formik.isValid && formik.dirty)}
                       onClick={handleAdd}
                       className="text-white mr-5 inline-flex items-center bg-blue-800 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-800 dark:focus:ring-blue-800">
                       {isLoading ?
@@ -507,7 +485,8 @@ export default function Reseller() {
 
                     <div className="col-span-2">
                       <label htmlFor="password" className="flex mb-2  font-medium text-gray-900 dark:text-white">Password</label>
-                      <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Password" required="" />
+                      <input type="password"
+                        onChange={(e) => setPassword(e.target.value)} value={password} name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Password" required="" />
                     </div>
                     <div className="col-span-2">
                       <label htmlFor="customerlimit" className="flex mb-2  font-medium text-gray-900 dark:text-white">Customer Limit</label>
