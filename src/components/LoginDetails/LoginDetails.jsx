@@ -2,10 +2,8 @@ import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import styles from './LoginDetails.module.css';
-import * as Yup from 'yup';
 import { Eye, EyeOff } from 'lucide-react';
 import { toast } from 'react-toastify';
-import { useFormik } from 'formik';
 
 export default function LoginDetails() {
   const [showPassword, setShowPassword] = useState(false);
@@ -28,7 +26,6 @@ export default function LoginDetails() {
       });
       const data = await response.json();
       if (response.status === 200) {
-        // formik.values.name = data.info.userName
         setUserName(data.info.userName)
         setUserEmail(data.info.email)
         console.log("snm", data);
