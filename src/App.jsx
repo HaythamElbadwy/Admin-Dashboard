@@ -20,21 +20,22 @@ function App() {
 
     {
       path: "/",
-      element: 
-      <ProtectedRoutes>
-        <Login />
-      </ProtectedRoutes>,
+      element:
+        <ProtectedRoutes>
+          <Login />
+        </ProtectedRoutes>,
     },
     {
       path: "/layout",
-      element:<ProtectedRoutes>
-        <Layout />
-      </ProtectedRoutes> ,
+      element:
+        <ProtectedRoutes>
+          <Layout />
+        </ProtectedRoutes>,
       children: [
 
         {
           path: "customer",
-           element:
+          element:
             <ProtectedRoutes>
               <Customers />
             </ProtectedRoutes>,

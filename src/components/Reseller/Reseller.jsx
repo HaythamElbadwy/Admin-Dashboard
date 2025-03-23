@@ -23,6 +23,7 @@ export default function Reseller() {
   const [isUserId, setIsUserId] = useState();
   const [blockword, setBlockWord] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
 
   function addReseller() {
@@ -396,8 +397,21 @@ export default function Reseller() {
                       <div className="col-span-2">
                         <label htmlFor="password"
                           className="flex mb-2  font-medium text-gray-900 dark:text-white">Password</label>
-                        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password}
-                          name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Password" required="" />
+                        <div className="relative">
+                          <input type={showPassword ? "text" : "password"}
+                            onChange={(e) => setPassword(e.target.value)} value={password}
+                            name="password"
+                            id="password"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Enter Your Password" required="" />
+                          <button
+                            type="button"
+                            className="absolute top-[12px] right-0 left-[347px] sm:left[290px] text-gray-600"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
+                          </button>
+                        </div>
                       </div>
                       <div className="col-span-2">
                         <label htmlFor="customerlimit" className="flex mb-2  font-medium text-gray-900 dark:text-white">Customer Limit</label>
@@ -486,8 +500,21 @@ export default function Reseller() {
 
                     <div className="col-span-2">
                       <label htmlFor="password" className="flex mb-2  font-medium text-gray-900 dark:text-white">Password</label>
-                      <input type="password"
-                        onChange={(e) => setPassword(e.target.value)} value={password} name="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Enter Your Password" required="" />
+                      <div className="relative">
+                          <input type={showPassword ? "text" : "password"}
+                            onChange={(e) => setPassword(e.target.value)} value={password}
+                            name="password"
+                            id="password"
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                            placeholder="Enter Your Password" required="" />
+                          <button
+                            type="button"
+                            className="absolute top-[12px] right-0 left-[347px] sm:left[290px] text-gray-600"
+                            onClick={() => setShowPassword(!showPassword)}
+                          >
+                            {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
+                          </button>
+                        </div>
                     </div>
                     <div className="col-span-2">
                       <label htmlFor="customerlimit" className="flex mb-2  font-medium text-gray-900 dark:text-white">Customer Limit</label>
@@ -495,8 +522,8 @@ export default function Reseller() {
                     </div>
                   </div>
                   <button type="button"
-                  onClick={clearInput}
-                   className="text-blue-700 mr-5
+                    onClick={clearInput}
+                    className="text-blue-700 mr-5
                    hover:text-white border border-blue-700
                     hover:bg-blue-800 focus:ring-4 focus:outline-none
                      focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center 

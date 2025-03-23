@@ -66,7 +66,7 @@ export default function Faqs() {
   }
   ///END ADD FAQS///
 
-  ///START GET FAQS///
+//////////////////////START GET FAQS////////////////////////////////
   const getFaqs = async () => {
 
     try {
