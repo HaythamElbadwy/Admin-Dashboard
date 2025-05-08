@@ -31,7 +31,9 @@ export default function Faqs() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message)
+        toast.success(data.message , {
+          theme : 'dark'
+        })
         setIsShowPopupAdd(false)
         clearInput()
         setFaqs(data.allFaq)
@@ -66,7 +68,7 @@ export default function Faqs() {
   }
   ///END ADD FAQS///
 
-//////////////////////START GET FAQS////////////////////////////////
+  //////////////////////START GET FAQS////////////////////////////////
   const getFaqs = async () => {
 
     try {
@@ -80,12 +82,7 @@ export default function Faqs() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message, {
-          theme: "dark"
-        });
         setFaqs(data.allFaq)
-        // console.log(data.footerContent.content);
-
       } else {
         switch (response.status) {
           case 500:
@@ -107,9 +104,9 @@ export default function Faqs() {
   useEffect(() => {
     getFaqs()
   }, [])
-////////////////////////END GET FAQS//////////////////////////////// 
+  ////////////////////////END GET FAQS//////////////////////////////// 
 
-//////////////////////START EDITE FAQS///////////////////////////////
+  //////////////////////START EDITE FAQS///////////////////////////////
 
   const editeFaqs = async (id) => {
     setIsLoading(true)
@@ -126,7 +123,9 @@ export default function Faqs() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message)
+        toast.success(data.message, {
+          theme: 'dark'
+        })
         setIsShowPopupEdite(false)
         clearInput()
         setFaqs(data.allFaq)
@@ -166,10 +165,10 @@ export default function Faqs() {
 
   }
 
-//////////////////END EDITE FAQS//////////////////////////////
+  //////////////////END EDITE FAQS//////////////////////////////
 
 
-/////////////////START DELETE FAQS////////////////////////////
+  /////////////////START DELETE FAQS////////////////////////////
 
   const delteFaqs = async (id) => {
     setIsLoading(true)
@@ -209,7 +208,7 @@ export default function Faqs() {
   function handleDelete() {
     delteFaqs(FaqId)
   }
-//////////////////////END DELETE FAQS//////////////////////////
+  //////////////////////END DELETE FAQS//////////////////////////
   const toggleFAQ = (index) => {
     if (activeIndex === index) {
       setActiveIndex(null); // Close the currently open accordion

@@ -7,8 +7,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export default function ResellerCustomer() {
-  const [first, setfirst] = useState()
-  useEffect(() => { }, [])
+
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setAllPage] = useState(0);
   const [allResellerCustomer, setAllResellerCustomer] = useState([]);
@@ -29,15 +28,9 @@ export default function ResellerCustomer() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message, {
-          theme: "dark"
-        });
         setAllResellerCustomer(data.subscriptions);
-        console.log(data);
-
         setCurrentPage(data.page);
-        setAllPage(data.totalPages)
-        console.log(data.subscriptions);
+        setAllPage(data.totalPages);
 
       } else {
         switch (response.status) {
@@ -45,6 +38,7 @@ export default function ResellerCustomer() {
             toast.error(data.message, {
               theme: "dark"
             });
+            break;
           case 404:
             toast.error(data.message, {
               theme: "dark"
@@ -118,8 +112,8 @@ export default function ResellerCustomer() {
                   <td scope="col" className="px-6 py-3">1 year</td>
                   <td scope="col" className="px-6 py-3">{item.subscriptionEndDate}</td>
                   <td scope="col" className="px-6 py-3">{item.isActive === true ?
-                  'Active' : item.isActive === false ?
-                'Not Active': 'PostPone'}</td>
+                    'Active' : item.isActive === false ?
+                      'Not Active' : 'PostPone'}</td>
                 </tr>
               ))
               }

@@ -26,7 +26,9 @@ export default function PrivacyPolicy() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message)
+        toast.success(data.message , {
+          theme : 'dark'
+        })
       } else {
         switch (response.status) {
           case 500:
@@ -35,7 +37,9 @@ export default function PrivacyPolicy() {
             });
             break;
           default:
-            toast('An error occurred. Please try again.');
+            toast('An error occurred. Please try again.' , {
+              theme : 'dark'
+            });
         }
       }
 
@@ -58,12 +62,7 @@ export default function PrivacyPolicy() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message, {
-          theme: "dark"
-        });
         setEditorHtml(data.footerContent.content)
-        console.log(data.footerContent.content);
-
       } else {
         switch (response.status) {
           case 500:

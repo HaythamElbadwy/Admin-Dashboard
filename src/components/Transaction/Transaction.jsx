@@ -38,14 +38,9 @@ export default function Transaction() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message, {
-          theme: "dark"
-        });
         setAllTransaction(data.subscriptions);
         setCurrentPage(data.page);
         setAllPage(data.totalPages)
-        console.log(data.subscriptions);
-
       } else {
         switch (response.status) {
           case 500:
@@ -250,7 +245,7 @@ export default function Transaction() {
 
       <div className='flex items-center justify-between pl-4 pr-4'>
         <h3>Showing {currentPage} to {totalPages} of {totalPages}</h3>
-        <div className="flex overflow-x-auto sm:justify-center">
+        <div className="flex overflow-x-auto sm:justify-center ">
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={onPageChange} />
         </div>
 

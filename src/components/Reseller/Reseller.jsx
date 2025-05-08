@@ -56,14 +56,7 @@ export default function Reseller() {
 
 
       if (response.ok) {
-
-        toast.success(data.message, {
-          theme: "dark"
-        });
         setIsAllReseller(data.allResellers);
-        console.log(data);
-
-
       } else {
         switch (response.status) {
           case 500:
@@ -118,8 +111,6 @@ export default function Reseller() {
       const data = await response.json();
 
       if (response.ok) {
-        console.log(data);
-
         getReseller()
         toast.success(data.message, {
           theme: 'dark'
@@ -228,8 +219,6 @@ export default function Reseller() {
 
 
   ////////////////////START BLOCK RESELLER FUNCTION//////////////////////
-
-
   const blockReseller = async (id) => {
     setIsLoading(true)
     try {
@@ -501,20 +490,20 @@ export default function Reseller() {
                     <div className="col-span-2">
                       <label htmlFor="password" className="flex mb-2  font-medium text-gray-900 dark:text-white">Password</label>
                       <div className="relative">
-                          <input type={showPassword ? "text" : "password"}
-                            onChange={(e) => setPassword(e.target.value)} value={password}
-                            name="password"
-                            id="password"
-                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Enter Your Password" required="" />
-                          <button
-                            type="button"
-                            className="absolute top-[12px] right-0 left-[347px] sm:left[290px] text-gray-600"
-                            onClick={() => setShowPassword(!showPassword)}
-                          >
-                            {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
-                          </button>
-                        </div>
+                        <input type={showPassword ? "text" : "password"}
+                          onChange={(e) => setPassword(e.target.value)} value={password}
+                          name="password"
+                          id="password"
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          placeholder="Enter Your Password" required="" />
+                        <button
+                          type="button"
+                          className="absolute top-[12px] right-0 left-[347px] sm:left[290px] text-gray-600"
+                          onClick={() => setShowPassword(!showPassword)}
+                        >
+                          {showPassword ? <Eye size={20} /> : <EyeOff size={20} />}
+                        </button>
+                      </div>
                     </div>
                     <div className="col-span-2">
                       <label htmlFor="customerlimit" className="flex mb-2  font-medium text-gray-900 dark:text-white">Customer Limit</label>

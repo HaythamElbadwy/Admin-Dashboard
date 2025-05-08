@@ -28,7 +28,9 @@ export default function TermsCondition() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message)
+        toast.success(data.message, {
+          theme: 'dark'
+        })
       } else {
         switch (response.status) {
           case 500:
@@ -61,12 +63,7 @@ export default function TermsCondition() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message, {
-          theme: "dark"
-        });
         setEditorHtml(data.footerContent.content)
-        console.log(data.footerContent.content);
-
       } else {
         switch (response.status) {
           case 500:

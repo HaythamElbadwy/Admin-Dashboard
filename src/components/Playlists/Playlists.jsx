@@ -16,7 +16,7 @@ export default function Playlists() {
   const [isUserId, setIsUserId] = useState();
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [isOpenFilter, setIsOpenFilter] = useState(false);
-   const [searchDevice, setSearchDevice] = useState('');
+  const [searchDevice, setSearchDevice] = useState('');
 
   const toggleDropdownFilter = () => {
     setIsOpenFilter(!isOpenFilter);
@@ -59,13 +59,9 @@ export default function Playlists() {
       const data = await response.json();
 
       if (response.ok) {
-        toast.success(data.message, {
-          theme: "dark"
-        });
         setAllDevice(data.users);
         setCurrentPage(data.page);
         setAllPage(data.totalPages)
-        console.log(data.users);
 
       } else {
         switch (response.status) {
@@ -97,9 +93,9 @@ export default function Playlists() {
   useEffect(() => {
     getDevice(1)
   }, [])
-///////////////////////END GET DEVICE FUNCTION////////////////////////
+  ///////////////////////END GET DEVICE FUNCTION////////////////////////
 
-///////////////////////START NEW SUBSCRIPTION FUNCTION/////////////////
+  ///////////////////////START NEW SUBSCRIPTION FUNCTION/////////////////
   const newSubscription = async (id) => {
     setIsLoading(true)
     try {
@@ -302,7 +298,7 @@ export default function Playlists() {
   ///////////////////////////END SEARCH DEVICE CUSTOMER////////////////////////////////////
   return (
     <>
-<div className={`${styles.dashboard_options} mt-12 flex items-center justify-around`}>
+      <div className={`${styles.dashboard_options} mt-12 flex items-center justify-around`}>
         <h1 className='font-semibold text-[20px]'>Customers</h1>
 
 
