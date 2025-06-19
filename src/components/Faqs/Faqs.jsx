@@ -19,7 +19,7 @@ export default function Faqs() {
   const addFaqs = async () => {
     setIsLoading(true)
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/faq/add`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/faq/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ export default function Faqs() {
   const getFaqs = async () => {
 
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/faq/get`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/faq/get`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -111,7 +111,7 @@ export default function Faqs() {
   const editeFaqs = async (id) => {
     setIsLoading(true)
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/faq/update/${id}`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/faq/update/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -173,7 +173,7 @@ export default function Faqs() {
   const delteFaqs = async (id) => {
     setIsLoading(true)
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/faq/delete/${id}`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/faq/delete/${id}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

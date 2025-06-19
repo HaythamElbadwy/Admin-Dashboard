@@ -27,7 +27,7 @@ export default function Transaction() {
   const getTransaction = async (page) => {
 
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/subscription/getAll?page=${page}`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/subscription/getAll?page=${page}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ export default function Transaction() {
     }
 
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/subscription/searchByMac?macAddress=${macAddress}`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/subscription/searchByMac?macAddress=${macAddress}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

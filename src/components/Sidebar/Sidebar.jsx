@@ -36,7 +36,7 @@ export default function Sidebar() {
   // };
   const adminInfo = async () => {
     try {
-      const response = await fetch('https://wish-omega-blush.vercel.app/admin/info', {
+      const response = await fetch('https://wish-seven-gules.vercel.app/admin/info', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

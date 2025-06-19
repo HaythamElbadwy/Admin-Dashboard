@@ -15,7 +15,7 @@ export default function Activation() {
   const getPrice = async () => {
 
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/price/get`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/price/get`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ export default function Activation() {
   const addPrice = async () => {
     setIsLoading(true)
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/price/add`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/price/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ export default function Activation() {
   const getPaymentKeys = async () => {
 
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/apiKey/get`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/apiKey/get`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -184,7 +184,7 @@ export default function Activation() {
   const addPaymentKeys = async () => {
     setIsLoadingPaymentKeys(true)
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/apiKey/add`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/apiKey/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -48,7 +48,7 @@ export default function Playlists() {
   const getDevice = async (page) => {
 
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/user/get?page=${page}`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/user/get?page=${page}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export default function Playlists() {
   const newSubscription = async (id) => {
     setIsLoading(true)
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/dashboard/subscription/${id}`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/dashboard/subscription/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +156,7 @@ export default function Playlists() {
   const cancelSubscription = async (id) => {
     setIsLoading(true)
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/dashboard/stopSubscription/${id}`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/dashboard/stopSubscription/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -204,7 +204,7 @@ export default function Playlists() {
   const renewSubscription = async (id) => {
     setIsLoading(true)
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/dashboard/renewSubscription/${id}`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/dashboard/renewSubscription/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -270,7 +270,7 @@ export default function Playlists() {
     }
 
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/user/search?macAddress=${macAddress}`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/user/search?macAddress=${macAddress}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

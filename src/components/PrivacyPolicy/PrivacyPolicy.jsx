@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
   const addPrivacyPolicy = async () => {
     setIsLoading(true)
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/footerContent/add`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/footerContent/add`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ export default function PrivacyPolicy() {
 
   const getPrivacyPolicy = async () => {
     try {
-      const response = await fetch(`https://wish-omega-blush.vercel.app/footerContent/get?page=Privacy_Policy`, {
+      const response = await fetch(`https://wish-seven-gules.vercel.app/footerContent/get?page=Privacy_Policy`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
